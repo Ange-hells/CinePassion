@@ -42,9 +42,17 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
                             $unActeur = $listeActeur-> getUnElement();
                             
                             echo "<div id='ficheActeur'>";
-                                echo "<img class='element1' src='./././image/personne/acteur/$unActeur->prenomPersonne $unActeur->nomPersonne.jpg'>";
-                                echo "<p class='element2'> $unActeur->prenomPersonne $unActeur->nomPersonne </br> $unActeur->agePersonne </br> né le $unActeur->dateNaissancePersonne </br> a $unActeur->villeNaissancePersonne </br> $unActeur->libellePays </p>";
-                                echo "<p class='element3'> Dans ce film, $unActeur->prenomPersonne $unActeur->nomPersonne joue le role de $unActeur->role il etais agé de ... lors de la sorti du film en France.</p>";
+                                if (file_exists("./././image/personne/acteur/$unActeur->prenomPersonne $unActeur->nomPersonne.jpg")){
+                                       echo " <img class='element1' src='./././image/personne/acteur/$unActeur->prenomPersonne $unActeur->nomPersonne.jpg'>";
+                                }else{
+                                    echo" <img class='element1' src='./././image/personne/Aucune personne.jpg'>";
+                                };
+                                echo "<p class='element2'> $unActeur->prenomPersonne $unActeur->nomPersonne </br> $unActeur->age ans </br> né le $unActeur->dateNaissance </br> a $unActeur->villeNaissance </br> $unActeur->paysNaissance </p>";        
+                                echo "<p class='element3'>"; if ($unActeur->sexe == 'M'){
+                                                                echo "Dans ce film, $unActeur->prenomPersonne $unActeur->nomPersonne joue le role de $unActeur->role il etais agé de $unActeur->ageDansFilm ans lors de la sorti du film en France.</p>";
+                                                            }else{
+                                                                echo "Dans ce film, $unActeur->prenomPersonne $unActeur->nomPersonne joue le role de $unActeur->role elle etais agée de $unActeur->ageDansFilm ans lors de la sorti du film en France.</p>";       
+                                                            };
                             echo "</div>";
              		    };
                 	   echo"</div>";
@@ -57,8 +65,9 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
             <input type="radio" id="notation" name="box" />
             <label for="notation">Notation
            		<div class="contenu">
-           			<img href="./././image/divers/enTravaux.png">
-           			
+           			<?php 
+           			  echo "pour $this->TitreFilm la note moyenne atribuer par CinePassion38 et de $this->note / 20";
+           			?>
            		</div>
             </label>
             

@@ -27,11 +27,14 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - Novembre 2019
      */
     public function getListeActeur($numFilm){
-        $sql = "select prenomPersonne, nomPersonne, dateNaissancePersonne, villeNaissancePersonne, libellePays, getAge(p.dateNaissancePersonne) as agePersonne, participer.role
-                from personne as p, pays, participer
-                where p.numPaysPersonne = pays.numPays
-                AND p.numPersonne = participer.numActeur
-                AND numPersonne IN (select numActeur from participer where numFilm = $numFilm);";
+        $sql = "SELECT getAge(p.dateNaissancePersonne) as age, getNbAnneesEcart(p.dateNaissancePersonne, f.dateSortieFilm) as ageDansFilm, DATE_FORMAT(p.dateNaissancePersonne, '%d %M %Y') as dateNaissance,
+                p2.libellePays as paysNaissance, p.prenomPersonne, p.nomPersonne, p1.role as role, sexepersonne as sexe, villeNaissancePersonne as villeNaissance
+                FROM personne p, acteur a,film f, participer p1, pays p2
+                WHERE a.numActeur = p.numPersonne
+                AND p1.numActeur = a.numActeur
+                AND p1.numFilm=f.numFilm
+                AND p.numPaysPersonne = p2.numPays
+                AND f.numFilm = '" . $numFilm . "';";
         
         $collection = new collection();
         $pdoStat = $this->executerRequete($sql);
@@ -206,6 +209,16 @@ class modeleFilmFiche extends modeleFilm{
         $pdoStat = $this->executerRequete($sql);
         $DureeFilm = $pdoStat->fetchObject();
         return $DureeFilm->dureeFilm;
+    }
+    
+    public function getNote($numFilm){
+        $sql = "select note_nathan, note_steph, note_martin, note_antho from notation where numfilm = $numFilm;";
+        $collection = new collection();
+        $pdoStat = $this->executerRequete($sql);
+        while(($uneNote = $pdoStat->fetchObject()) !== false){
+            $collection->ajouter($uneNote);
+        }
+        return $collection;
     }
     
     /**

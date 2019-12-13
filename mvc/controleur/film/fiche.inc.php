@@ -36,8 +36,8 @@ class controleurFilmFiche extends controleur {
         // ===============================================================================================================
         // titres de la page
         // ===============================================================================================================
-        $this->titreHeader = "Accueil";
-        $this->titreMain = "Description du film n°$this->section";
+        $this->titreHeader = "Fiche descriptive";
+        $this->titreMain = "Description du film n°$this->section :"; //$this->TitreFilm";
         
         // ===============================================================================================================
         // encarts
@@ -59,7 +59,7 @@ class controleurFilmFiche extends controleur {
         
         // ===============================================================================================================
         // alimentation des données COMMUNES à toutes les pages
-        // ===============================================================================================================
+        // ===============================================================================================================        
         parent::setDonnees();
     }
     
@@ -89,7 +89,8 @@ class controleurFilmFiche extends controleur {
         $this->Synopsis = $this->modele->getSynopsis($this->numFilm);
         
         $this->nbActeur = $this->modele->getNbActeur($this->numFilm);
-//         $this->titreFilm = $this->modele->getActeurFilm(1);
+
+        $this->note = $this->getNote($this->numFilm);
         
         $this->affiche = $this->getAffiche($this->TitreFilm);
         $this->photo = $this->getPhotos($this->numFilm);
@@ -130,6 +131,18 @@ class controleurFilmFiche extends controleur {
         }
     }
     
+    private function getNote($numFilm){
+        $this->listeNote = $this->modele->getNote($this->numFilm);
+        $total = 0;
+        $i = 0;
+        while (!$this->listeNote->estVide()){
+            $uneNote = $this->listeNote->getUnElement();
+            $total += $uneNote;
+            $i += 1;
+        };
+        $note = ($total/$i);
+        return $note;    
+    }
     
     
     // 	<a href="./index.php?module=film&page=fiche&section= ".getnumfilm.">...</a>
