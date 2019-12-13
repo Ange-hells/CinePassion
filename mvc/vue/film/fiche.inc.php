@@ -66,7 +66,7 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
             <label for="notation">Notation
            		<div class="contenu">
            			<?php 
-           			  echo "pour $this->TitreFilm la note moyenne atribuer par CinePassion38 et de $this->note / 20";
+           			  echo "pour $TitreFilm la note moyenne atribuer par CinePassion38 et de $note / 20";
            			?>
            		</div>
             </label>
