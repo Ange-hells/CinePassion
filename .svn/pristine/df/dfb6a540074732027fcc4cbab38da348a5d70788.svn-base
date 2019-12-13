@@ -1,0 +1,50 @@
+<!-- ========= V U E =============================================================================================
+fichier				: ./mvc/vue/film/accueil.inc.php
+auteur				: Nathan Thomasset (nathan.thomasset2@gmail.com)
+date de création	: septembre 2019
+date de modification:
+rôle					: permet de générer le code xhtml de la partie centrale de la page d'accueil du module cinepassion38
+ ================================================================================================================= -->
+    
+<div id='content2'>
+	<span>
+		<h1> WORK IN PROGRESS </h1>
+		Le tableu ci-dessous presente l'integralité des films référencés dans notre cinémathèque (<?php echo $nbFilms; ?> actuellement). Les films sont triés selon l'ordre alphanumerique.
+		en survolant le titre d'un film, le réalisateur correspondant s'affiche dans une note. En cliquant sur une ligne du tableau, la page présentant les informations détaillées du 
+		film sera affichée.
+	</span>
+	<span class='contentInfos'>
+    	<table>
+    		<caption>Liste des Films</caption>	  
+    	     <thead>
+    	        <tr>
+    	            <th>Titre</th>
+    	            <th>Genre</th>
+    	            <th>Année</th>
+     				<th>Durée</th>
+    	        </tr>
+    	    </thead>
+            <tbody>
+                <tr>
+                    <?php foreach($listeFilm as $collection => $unfilm) { ?>
+                    <td><?php echo $unFilm['titreFilm'];?></td>
+                    <td><?php echo $unFilm['libelleGenre'];?></td>
+                    <td><?php echo $unFilm['annee'];?></td>
+                    <td><?php echo $unFilm['duree'];?></td>
+                </tr>	  
+                <?php  } //pour finir la boucle?>  
+            </tbody>
+
+    	</table>
+
+	</span>
+	<span class='contentInfos'>
+		
+
+	</span>
+            
+	<span class='contentInfos'>
+		
+	</span>
+</div><!-- content2 -->
+		    

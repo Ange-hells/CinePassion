@@ -1,0 +1,56 @@
+<!-- ========= V U E =============================================================================================
+fichier				: ./mvc/vue/film/accueil.inc.php
+auteur				: Nathan Thomasset (nathan.thomasset2@gmail.com)
+date de création	: septembre 2019
+date de modification:
+rôle					: permet de générer le code xhtml de la partie centrale de la page d'accueil du module cinepassion38
+ ================================================================================================================= -->
+    
+<div id='content2'>
+	<span>
+		Le tableu ci-dessous presente l'integralité des films référencés dans notre cinémathèque (<?php echo $nbFilms; ?> actuellement). Les films sont triés selon l'ordre alphanumerique.
+		en survolant le titre d'un film, le réalisateur correspondant s'affiche dans une note. En cliquant sur une ligne du tableau, la page présentant les informations détaillées du 
+		film sera affichée.
+	</span>
+	<span class='contentInfos'>
+		<table style="text-align: center; width: 100%;">
+            <caption style=" background-color: silver; color: black;">Liste des <?php echo $nbFilms; ?> Films de notre cinémathèque</caption>	  
+            <thead style=" text-align: center;">
+                <tr style="background-color: silver;">
+                    <th>Titre</th>
+                    <th>Genre</th>
+                    <th>Année</th>
+                    <th>Durée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php 
+                    $nbaffmax=20;
+                    $nbaffmin=0;
+                        if (isset($listeFilm)){
+                            while (!$listeFilm->estVide() && $nbaffmin<$nbaffmax){
+                                    $unFilm= $listeFilm-> getUnElement()
+                    ?>
+                <tr class="ligne">
+                    <td class="titre"><?php echo $unFilm->titreFilm; ?></td>
+                    <td class="genre"><?php echo $unFilm->libelleGenre; ?></td>
+                    <td class="annee"><?php echo $unFilm->annee; ?></td>
+                    <td class="duree"><?php echo $unFilm->duree; ?></td>
+                </tr>
+                
+            <?php $nbaffmin++; }}?>
+            </tbody>
+    	</table>
+    	<button>page suivente <?php $nbaffmax =40; $nbaffmin=21;?></button>
+	</span>
+	<span class='contentInfos'>
+		
+
+	</span>
+            
+	<span class='contentInfos'>
+		
+	</span>
+</div><!-- content2 -->
+		    

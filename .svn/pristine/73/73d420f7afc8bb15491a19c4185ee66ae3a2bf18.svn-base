@@ -1,0 +1,80 @@
+<?php
+/*================================================================================================================
+ fichier			: class.navigation.inc.php
+ auteur				: 
+ date de création	: novembre 2019
+ rôle				: décrit la classe navigation qui permet de gérer la navigation du tableau de films
+ ================================================================================================================*/
+
+/**
+ * La classe navigation permet de gérer la barre de navigation du tableau
+ * @author 
+ * @version 1.0
+ * @copyright 
+ */
+class navigation {
+    
+    protected $module;
+    protected $page;
+    protected $action;
+    protected $section;
+    protected $nbSections;
+    
+    
+    
+    public function __construct($module, $page, $action, $nbSections, $section) {
+        $this->module = $module;
+        $this->page = $page;
+        $this->action = $action;
+        $this->nbSections = $nbSections;
+        $this->section = $section;
+    }
+    
+    /**
+     * renvoie le code des boutons
+     *
+     */
+    public function getBoutons(){
+        if ($this->section == 1) {
+            return "<img alt='' src= './image/images/btPremInactif.png'/>
+					<img alt='' src= './image/images/btPrecInactif.png'/>
+					<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->section + 1) . "'><img alt='' src= './image/images/btSuivActif.png' /></a>
+					<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->nbSections) . "'><img alt='' src= './image/images/btDerActif.png'/></a>";
+            
+        }elseif ($this->section == $this->nbSections) {
+            return "<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->section == 1) . "'><img alt='' src= './image/images/btPremActif.png'/></a>
+					<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->section - 1) . "'><img alt='' src= './image/images/btPrecActif.png'/></a>
+					<img alt='' src= './image/images/btSuivInactif.png'/>
+					<img alt='' src= './image/images/btDerInactif.png'/>";
+            
+        }else{
+            return "<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->section == 1) . "'><img alt='' src= './image/images/btPremActif.png'/></a>
+					<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->section - 1) . "'><img alt='' src= './image/images/btPrecActif.png'/></a>
+					<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->section + 1) . "'><img alt='' src= './image/images/btSuivActif.png' /></a>
+					<a href='./index.php?module=" . ($this->module) . "&amp;page=" . ($this->page) . "&action=defaut&section=" . ($this->nbSections) . "'><img alt='' src= './image/images/btDerActif.png'/></a>";
+            
+        }
+        
+    }
+    
+    
+    public function getNumeros($nbAffiches) {
+        $numeros = "";
+        $nbAffiches = ceil($nbAffiches);
+        $i = 1;
+        while ($i < ($this->nbSections + 1)) {
+            if ($i >= ($this->section - $nbAffiches) and $i <= ($this->section + $nbAffiches) or $i == 1 or $i == ($this->nbSections)){
+                if ($i == ($this->section)){
+                    $numeros .= "<span id='sectionCourante'>$i</span>";
+                }else{
+                    $numeros .= "<a href='./index.php?module=".$this->module . "&amp;page=" . $this->page . "&amp;action="  . $this->action . "&amp;section=" . $i ."'> " . $i . " </a>";
+                }
+            }elseif($i == $this->section - $nbAffiches - 1  or $i == $this->section + ($nbAffiches + 1)){
+                $numeros .= "...";
+            }
+            $i += 1;
+        }
+        return $numeros;
+    }
+}
+
