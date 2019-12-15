@@ -45,7 +45,6 @@ class controleurFilmFiche extends controleur {
         $this->encartsDroite = "partenaires.txt";
         $this->encartsDroite = "partenaires.txt";
         $this->encartsDroite = "partenaires.txt";
-        $this->encartsGauche = "partenaires.txt";
       
         // ===============================================================================================================
         // liens
@@ -75,12 +74,13 @@ class controleurFilmFiche extends controleur {
         $this->nbFilms = $this->modele->getNbrFilm();
         $this->numFilm = $this->section;
         $this->listeActeur = $this->modele->getListeActeur($this->numFilm);
+        $this->nav = new navigation($this->module, $this->page, $this->action, $this->section,  $this->nbFilms);
 //         $this->listeNote = $this->modele->getNote($this->numFilm);
         
         $this->TitreFilm = $this->modele->getTitreFilm($this->numFilm);
         $this->PaysFilm = $this->modele->getPays($this->numFilm);
         $this->GenreFilm = $this->modele->getGenre($this->numFilm);
-//         $this->PositionFilm = $this->modele->getPosition($this->numFilm);
+        $this->PositionFilm = $this->modele->getPosition($this->numFilm);
         $this->PaysReal = $this->modele->getPaysReal($this->numFilm);
         $this->PrenomReal = $this->modele->getPrenomReal($this->numFilm);
         $this->NomReal = $this->modele->getNomReal($this->numFilm);
@@ -92,7 +92,7 @@ class controleurFilmFiche extends controleur {
         $this->nbActeur = $this->modele->getNbActeur($this->numFilm);
 
         $this->note = $this->modele->getNote($this->numFilm);
-//         $this->etoile = $this->getEtoile($this->note);
+        $this->Etoile = $this->getEtoile($this->note);
         
         $this->affiche = $this->getAffiche($this->TitreFilm);
         $this->photo = $this->getPhotos($this->numFilm);
@@ -102,11 +102,11 @@ class controleurFilmFiche extends controleur {
     }
     
     private function getAffiche($TitreFilm) {
-        $affiche = "./image/film/affiche/$TitreFilm.jpg"; // declare le chemin du dossier
+        $affiche = "./././image/film/affiche/$TitreFilm.jpg"; // declare le chemin du dossier
         if (!file_exists($affiche)){
-           return $affiche = "../image/film/affiche/Aucune affiche.jpg";
+           return $affiche = "<img src= './././image/film/affiche/Aucune affiche.jpg'>";
         }else{
-            return $affiche = "../image/film/affiche/$TitreFilm.jpg";
+           return $affiche = "<img src='./././image/film/affiche/$TitreFilm'.jpg>";
         }
     }
         
@@ -115,7 +115,7 @@ class controleurFilmFiche extends controleur {
         if (!file_exists($dossier)){
             return $Photos = "";
         }else{
-            return $lesAffiche = glob($dossier.'*.jpg');
+            return $Photos = [glob($dossier.'*.jpg')];
         }
         
     }
@@ -133,67 +133,40 @@ class controleurFilmFiche extends controleur {
         }
     }
     
-//     private function getNote($numFilm, $collection){
-//         $total = ($collection->note_nathan +  $collection->note_steph + $collection->note_martin + $collection->note_antho);
-//         $note = $total/4;
-//         return $note;
-//     }
-    
-//     private function getNote($numFilm, $collection){
-//         foreach ($uneNote as $collection)
-//             $total += $uneNote
-        
-        
-//         return $note;
-//     }
-    
-//     private function getNote($numFilm){
-//         $this->listeNote = $this->modele->getNote($this->numFilm);
-//         $total = 0;
-//         $i = 0;
-//         while (!$this->listeNote->estVide()){
-//             $uneNote = $this->listeNote->getUnElement();
-//             $total += $uneNote;
-//             $i += 1;
-//         };
-//         $note = ($total/$i);
-//         return $note;
-//     }
-    
     private function getEtoile($uneNote){
         switch ($uneNote) {
             case 20 or 19:
-                echo "<img src'./image/divers/etoiles/50.png'>";
+                echo "<img src'./././image/divers/etoiles/50.png'>";
                 break;
             case 18 or 17:
-                echo "<img src'./image/divers/etoiles/45.png'>";
+                echo "<img src'./././image/divers/etoiles/45.png'>";
                 break;
             case 16 or 15:
-                echo "<img src'./image/divers/etoiles/40.png'>";
+                echo "<img src'./././image/divers/etoiles/40.png'>";
                 break;
             case 14 or 13:
-                echo "<img src'./image/divers/etoiles/35.png'>";
+                echo "<img src'./././image/divers/etoiles/35.png'>";
                 break;
             case 12 or 11:
-                echo "<img src'./image/divers/etoiles/30.png'>";
+                echo "<img src'./././image/divers/etoiles/30.png'>";
                 break;
             case 10:
-                echo "<img src'./image/divers/etoiles/25.png'>";
+                echo "<img src'./././image/divers/etoiles/25.png'>";
                 break;
             case 9 or 8:
-                echo "<img src'./image/divers/etoiles/20.png'>";
+                echo "<img src'./././image/divers/etoiles/20.png'>";
                 break;
             case 7 or 6:
-                echo "<img src'./image/divers/etoiles/15.png'>";
+                echo "<img src'./././image/divers/etoiles/15.png'>";
                 break;
             case 5 or 4:
-                echo "<img src'./image/divers/etoiles/10.png'>";
+                echo "<img src'./././image/divers/etoiles/10.png'>";
                 break;
             case 3 or 2:
-                echo "<img src'./image/divers/etoiles/05.png'>";
+                echo "<img src'./././image/divers/etoiles/05.png'>";
                 break;
             case 0 or 1 :
-                echo "<img src'./image/divers/etoiles/0.png'>";
+                echo "<img src'./././image/divers/etoiles/0.png'>";
                 break;
         }
     }

@@ -10,7 +10,10 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
     <div id="affiche">
         <?php 
             echo $affiche;
-//             echo $nav->getnav();
+            echo "<br>";
+            echo "<div class='nav'>";
+                echo $nav->getBoutons(); 
+            echo "</div>";
         ?>
     </div>
 	<div id="onglet">
@@ -18,7 +21,7 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
         <label for="information">Information 
         	<div class="contenu">
         		<p>
-            		<?php echo $TitreFilm;?> et le ?php echo $PositionFilm;? film dans notre cinématheque du réalisateur <?php echo $PaysReal." ". 
+            		<?php echo $TitreFilm;?> et le <?php echo $PositionFilm;?> film dans notre cinématheque du réalisateur <?php echo $PaysReal." ". 
             		$PrenomReal." ". $NomReal;?>. 
             		C'est un film <?php echo $GenreFilm." ". $PaysFilm;?> d'une duree de <?php echo $DureeFilm;?> qui est sorti dans les salles de cinéma 
             		en france le <?php echo $DateSortie;?>.
@@ -55,9 +58,9 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
                             };
                             echo "<p class='element2'> $unActeur->prenomPersonne $unActeur->nomPersonne </br> $unActeur->age ans </br> né le $unActeur->dateNaissance </br> a $unActeur->villeNaissance </br> $unActeur->paysNaissance </p>";        
                             echo "<p class='element3'>"; if ($unActeur->sexe == 'M'){
-                                                            echo "Dans ce film, $unActeur->prenomPersonne $unActeur->nomPersonne joue le role de $unActeur->role il etais agé de $unActeur->ageDansFilm ans lors de la sorti du film en France.</p>";
+                                                            echo "Dans ce film, $unActeur->prenomPersonne $unActeur->nomPersonne joue le role de $unActeur->role il etais agé de $unActeur->ageDansFilm ans lors de la sortie du film en France.</p>";
                                                         }else{
-                                                            echo "Dans ce film, $unActeur->prenomPersonne $unActeur->nomPersonne joue le role de $unActeur->role elle etais agée de $unActeur->ageDansFilm ans lors de la sorti du film en France.</p>";       
+                                                            echo "Dans ce film, $unActeur->prenomPersonne $unActeur->nomPersonne joue le role de $unActeur->role elle etais agée de $unActeur->ageDansFilm ans lors de la sortie du film en France.</p>";       
                                                         };
                         echo "</div>";
          		    };
@@ -74,7 +77,7 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
            		<p>
            			<?php 
                			  echo "pour $TitreFilm la note moyenne atribuer par CinePassion38 et de $note / 20";
-//                			  echo $this->getEtoile($note) ;
+               			  echo $Etoile ;
                			?>
            		</p>
        		</div>

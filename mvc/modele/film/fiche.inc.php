@@ -129,10 +129,24 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - novenbre 2019
      */
     public function getPosition($numFilm){
-        $sql = "select synopsisFilm from film where $numFilm;";
+        $sql = "select count(titreFilm) as positionFilm
+                from film, realisateur, personne
+                where realisateur.numRealisateur = film.numRealisateurFilm
+                and personne.numPersonne = realisateur.numRealisateur
+                and film.numRealisateurFilm = (select film.numRealisateurFilm from film where film.numFilm = 2)
+                and film.dateSortieFilm <= (select film.dateSortieFilm from film where film.numFilm = 2)
+                order by film.dateSortieFilm;";
+        
         $pdoStat = $this->executerRequete($sql);
         $PositionFilm = $pdoStat->fetchObject();
-        return $PositionFilm->PositionFilm;
+        if ($PositionFilm->positionFilm == 1){
+            $PositionFilm = "1<sup>er</sup>";
+            
+        }else{
+            $PositionFilm = "$PositionFilm->positionFilm<sup>éme</sup>";
+        }
+        
+        return $PositionFilm;
     }
 
     /**
@@ -190,7 +204,7 @@ class modeleFilmFiche extends modeleFilm{
     * @copyright Thomasset Nathan - novenbre 2019
     */
     public function getDateSortie($numFilm){
-        $sql = "select dateSortieFilm from film where numfilm = $numFilm;";
+        $sql = "select DATE_FORMAT(dateSortieFilm, '%d %M %Y') as dateSortieFilm from film where numfilm = $numFilm;";
         $pdoStat = $this->executerRequete($sql);
         $DateSortie = $pdoStat->fetchObject();
         return $DateSortie->dateSortieFilm;

@@ -7,7 +7,28 @@ div#main div#content2
 #onglet 
 {
 	position: relative;
-	width : 100%
+	width : 100%;
+	left: 165px;
+    top: -253px;
+}
+
+#affiche
+{
+	position: relative;
+	width: 180px;
+	
+}
+
+.nav
+{
+	width: 160px;
+	
+}
+
+.nav img
+{
+	height: 36px;
+	
 }
 
 label 
@@ -50,7 +71,7 @@ label:hover
     position: absolute;
     top: 26px;
     left: 0;
-    width: 100%;
+    width: 655px;
     min-width: 650px;
     min-height: 150px;
     height: 100%;
