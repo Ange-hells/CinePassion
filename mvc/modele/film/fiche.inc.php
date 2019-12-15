@@ -213,12 +213,12 @@ class modeleFilmFiche extends modeleFilm{
     
     public function getNote($numFilm){
         $sql = "select note_nathan, note_steph, note_martin, note_antho from notation where numfilm = $numFilm;";
-        $collection = new collection();
+        
+//         $collection = new collection();
         $pdoStat = $this->executerRequete($sql);
-        while(($uneNote = $pdoStat->fetchObject()) !== false){
-            $collection->ajouter($uneNote);
-        }
-        return $collection;
+        $listeNote = $pdoStat->fetchObject();
+        $total = ($listeNote->note_nathan + $listeNote->note_steph + $listeNote->note_martin + $listeNote->note_antho);
+        return $total/4;
     }
     
     /**
