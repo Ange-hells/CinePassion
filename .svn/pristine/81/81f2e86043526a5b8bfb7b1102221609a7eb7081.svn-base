@@ -1,0 +1,73 @@
+<?php
+/*======= C O N T R O L E U R ====================================================================================
+ fichier				: ./mvc/controleur/film/liste.inc.php
+ auteur				: Nathan Thomasset (nathan.thomasset2@gmail.com)
+ date de création	: octobre 2019
+ date de modification:
+ rôle				: le contrôleur de la page d'accueil des films
+ ================================================================================================================*/
+class controleurFilmListe extends controleur{
+    
+    private $modele;
+    
+    public function __construct(){
+        require ("./mvc/modele/film/commun.inc.php");
+        require ("./mvc/modele/film/liste.inc.php");
+        $this->modele = new modelelisteFilm();
+    }
+    
+    /**
+     * Met à jour le tableau $donnees de la classe mère avec les informations spécifiques de la page
+     * @param null
+     * @return null
+     * @author Christophe Goidin <christophe.goidin@ac-grenoble.fr>
+     * @version 1.1
+     * @copyright Christophe Goidin - juin 2017
+     */
+    public function setDonnees() {
+        // ===============================================================================================================
+        // titres de la page
+        // ===============================================================================================================
+        $this->titreHeader = "Liste des films";
+        $this->titreMain = "liste des films";
+        
+        // ===============================================================================================================
+        // encarts
+        // ===============================================================================================================
+        $this->encartsGauche = "partenaires.txt";
+        
+        // ===============================================================================================================
+        // liens
+        // ===============================================================================================================
+        
+        
+        // ===============================================================================================================
+        // texte défilant
+        // ===============================================================================================================
+        // rien
+        
+        // ===============================================================================================================
+        // alimentation des données COMMUNES à toutes les pages
+        // ===============================================================================================================
+        parent::setDonnees();
+    }
+    
+    /**
+     * Génère l'affichage de la vue pour l'action par défaut de la page
+     * @param null
+     * @return null
+     * @author Christophe Goidin <christophe.goidin@ac-grenoble.fr>
+     * @version 1.0
+     * @copyright Christophe Goidin - Juin 2017
+     */
+    public function defaut() {
+        $this->nbFilms = $this->modele->getNbrFilm();
+        $this->listeFilm = $this->modele->getListeFilms();
+//         $this->nav = new navigation($this->module, $this->page, $this->action, $this->nbSections, $this->section);
+//         $this->nbFilmsParSection = configuration::get("nbFilmsParSection");
+        parent::genererVue();
+    }
+    
+} // class
+
+?>

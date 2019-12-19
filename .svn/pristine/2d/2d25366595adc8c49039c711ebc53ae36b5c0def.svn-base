@@ -1,0 +1,77 @@
+#tab
+{
+	text-align: center; 
+	width: 100%;
+	border: black solid 1px;
+	border-collapse: collapse;
+	
+}
+
+caption
+{
+	border: black solid 1px;
+}
+
+tr
+{
+	border : black solid 1px;
+	border-collapse: collapse;
+}
+
+#navListe
+{
+    display: flex;
+    list-style: none;
+    border: solid black 1px;
+    width: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 16px;
+    margin-bottom: 0px;
+}
+
+abbr
+{
+	text-decoration: none;
+	
+}
+
+tr:nth-child(even)
+{
+	background-color: silver;
+	
+}
+
+tr:nth-child(odd)
+{
+	background-color: grey;
+	
+}
+
+.totab
+{
+	background-color: dimgrey;
+	color: black;
+	
+	
+}
+
+.real
+{
+	display: none;
+}
+
+.titre:hover .real
+{
+	display: block;
+}
+	
+.navigation
+{
+	border: solid black 2px;
+	border-radius: 5px;
+	
+}
+	
+	
+	
