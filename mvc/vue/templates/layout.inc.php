@@ -91,7 +91,11 @@
     				<input class="Champ" type="id" name="id" placeholder=" name" autocomplete="off" > 
     				<input class="Champ" type="password" name="passe" placeholder=" password" autocomplete="off" >
     				<input class="Bouton" type="submit" value="Valider" > 
+<<<<<<< HEAD
     				<a href="./index.php?module=home&amp;page=inscription"><input class="Bouton" type="button" value="Inscription"></a>
+=======
+    				<a href="./index.php?module=home&amp;page=inscription"><input class="Bouton" type="button" value="inscription"></a>
+>>>>>>> 31bd35a87045f5713a9f4ca4dbce0e001badce55
     			</form>
     		</div>
     		<div id='titre'>
