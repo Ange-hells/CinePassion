@@ -150,16 +150,13 @@ div#header div#authentification
 	top: 20px;
 	left: 20px;
 	padding: 0px;
-<<<<<<< HEAD
 	width: 180px;
-=======
 	width: 230px;
->>>>>>> 31bd35a87045f5713a9f4ca4dbce0e001badce55
 	border: none;
 	color: white;
 }
 
-<<<<<<< HEAD
+
 div#header div#authentification .Champ
 {
     border-radius: 5px;
@@ -172,8 +169,8 @@ div#header div#authentification .Bouton
     margin-bottom: 3px;
 	margin-right: 5px;
     width: 82px;
+}
 	
-=======
 .Champ
 {
     border-radius: 5px;
@@ -186,7 +183,6 @@ div#header div#authentification .Bouton
     margin-bottom: 3px;
 	width: 84px;
 	margin-right: 1px;
->>>>>>> 31bd35a87045f5713a9f4ca4dbce0e001badce55
 }
 
 div#header div#titre 
@@ -243,12 +239,9 @@ div#header div#dateDuJour
 div#header img#fondHeader 
 {
 	border-radius: 10px;
-<<<<<<< HEAD
+
 } 
-=======
-}
-	
->>>>>>> 31bd35a87045f5713a9f4ca4dbce0e001badce55
+
 
 /* ======================================================================================================= 
    menu : la mise en forme du menu est décrite dans le fichier menu.css
@@ -343,6 +336,7 @@ div#main div[id^=encarts]
 	width: 200px;
 	background-color: inherit;
 }
+
 div#main div#encartsGauche 
 {
 	float: left;
