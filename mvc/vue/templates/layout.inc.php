@@ -25,8 +25,8 @@
     	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'/></script>
     	<?php 
     		if (isset($texteDefilant)) {
-    			echo "<link rel='stylesheet' type='text/css' href='./librairie/liscroll/liscroll1.0.css' />
-    				  <script type='text/javascript' src='./librairie/liscroll/liscroll1.0.js'></script>" . PHP_EOL;
+    			echo "<link rel='stylesheet' type='text/css' href='./librairie/liscroll/css/liscroll1.0.css' />
+    				  <script type='text/javascript' src='./librairie/liscroll/js/liscroll1.0.js'></script>" . PHP_EOL;
     		}
     		if (isset($enteteLien)) {
     			echo $enteteLien . PHP_EOL;
