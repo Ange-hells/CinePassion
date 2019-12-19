@@ -8,7 +8,6 @@ rôle				: le contrôleur de la page d'accueil des films
 ================================================================================================================*/
 
 /**
-/**
  * Classe relative au contrôleur de la page accueil du domaine cinepassion38
  * @author Christophe Goidin <christophe.goidin@ac-grenoble.fr>
  * @version 1.0
@@ -96,7 +95,7 @@ class controleurFilmAccueil extends controleur {
 	        do {
 	            $nbAlea = mt_rand(0, count($lesAffiches) - 1);
 	        }while ($this->estPresent($lesAffiches[$nbAlea], $result, array($dossier . "Aucune affiche.jpg")));
-	        $result [$i]['affiche'] = $lesAffiches[$nbAlea];
+	        $result['affiche'] = $lesAffiches[$nbAlea];
 	        
 	    }
 	    return $result;
