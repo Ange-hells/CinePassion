@@ -51,6 +51,11 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
                         $unActeur = $listeActeur-> getUnElement();
                         
                         echo "<div id='ficheActeur'>";
+                            if ($unActeur->sexe == 'M'){
+                                echo "<img class='sexe' src='./././image/divers/homme.png'>";
+                            }else{
+                                echo "<img class='sexe' src='./././image/divers/femme.png'>";
+                            };
                             if (file_exists("./././image/personne/acteur/$unActeur->prenomPersonne $unActeur->nomPersonne.jpg")){
                                    echo " <img class='element1' src='./././image/personne/acteur/$unActeur->prenomPersonne $unActeur->nomPersonne.jpg'>";
                             }else{
@@ -91,12 +96,4 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
         	</div>
         </label>
     </div>
-
-	<span class='contentInfos'>
-		
-	</span>
-            
-	<span class='contentInfos'>
-		
-	</span>
 </div><!-- content2 -->

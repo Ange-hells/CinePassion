@@ -150,9 +150,23 @@ div#header div#authentification
 	top: 20px;
 	left: 20px;
 	padding: 0px;
-	width: 280px;
+	width: 230px;
 	border: none;
 	color: white;
+}
+
+.Champ
+{
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+.Bouton
+{
+	border-radius: 5px;
+    margin-bottom: 3px;
+	width: 84px;
+	margin-right: 1px;
 }
 
 div#header div#titre 
@@ -210,21 +224,7 @@ div#header img#fondHeader
 {
 	border-radius: 10px;
 }
-
-
-.signZone
-{
-	 /* display: flex; */
 	
-}  
-
-.signElement
-{
-	
-    border-radius: 5px;
-    margin-bottom: 3px;
-	
-}	
 
 /* ======================================================================================================= 
    menu : la mise en forme du menu est décrite dans le fichier menu.css
