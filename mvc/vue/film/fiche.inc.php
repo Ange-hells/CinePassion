@@ -21,6 +21,7 @@ rôle					: permet de générer le code xhtml de la partie centrale de la page d
         <label for="information">Information 
         	<div class="contenu">
         		<p>
+        			<?php $this->action = "info";?>
             		<?php echo $TitreFilm;?> et le <?php echo $PositionFilm;?> film dans notre cinématheque du réalisateur <?php echo $PaysReal." ". 
             		$PrenomReal." ". $NomReal;?>. 
             		C'est un film <?php echo $GenreFilm." ". $PaysFilm;?> d'une duree de <?php echo $DureeFilm;?> qui est sorti dans les salles de cinéma 
