@@ -21,8 +21,8 @@
     	
     	<script type='text/javascript' src='./librairie/jquery/js/jquery1.7.2.js'></script>
     	<script type="text/javascript" src="./librairie/jquery/js/jquery-1.2.6.min.js"></script>
-    	<script type='text/javascript' src='./librairie/simpleslideshow/js/slideSwitch.js'/></script>
-    	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'/></script>
+    	<script type='text/javascript' src='./librairie/simpleslideshow/js/slideSwitch.js'></script>
+    	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'></script>
     	<?php 
     		if (isset($texteDefilant)) {
     			echo "<link rel='stylesheet' type='text/css' href='./librairie/liscroll/css/liscroll1.0.css' />
@@ -86,7 +86,7 @@
     		<img alt='' id='fondHeader' src='./image/divers/fondHeader.jpg' />
     		<img alt='' src='./image/divers/cinepassion38Logo.png' id='cinepassion38' />
     		<div id='authentification'>
-    			<?php echo $authentification . PHP_EOL; ?>
+    			
     			<form action="./index.php" method="post" id='signZone'> 
     				<input class="Champ" type="id" name="id" placeholder=" name" autocomplete="off" > 
     				<input class="Champ" type="password" name="passe" placeholder=" password" autocomplete="off" >
@@ -128,16 +128,16 @@
     			<li id='accueil'><a href='./index.php?module=home&amp;page=accueil'>&nbsp;</a></li>
     			<li class='plus'>cinepassion38
     				<ul class='nv2'>
-    					<li><a href='./index.php?module=cinepassion38&amp;page=accueil'>accueil</a></li>
-    					<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'>nos partenaires</a></li>
-    					<li><a href='./index.php?module=cinepassion38&amp;page=plan'>plan</a></li>
+    					<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
+    					<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> nos partenaires </a></li>
+    					<li><a href='./index.php?module=cinepassion38&amp;page=plan'> plan </a></li>
     				</ul>
     			</li>
     			<li class='plus'>Film
     				<ul class='nv2'>
-    					<li><a href='./index.php?module=film&amp;page=accueil'>accueil</a></li>
+    					<li><a href='./index.php?module=film&amp;page=accueil'> accueil </a></li>
     					<li><a href='./index.php?module=film&amp;page=liste'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> Liste des films <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
-    					<li><a href='./index.php?module=film&amp;page=fiche'><img src="https://img.icons8.com/color/16/000000/maintenance.png">fiche<img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
+    					<li><a href='./index.php?module=film&amp;page=fiche'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> fiche <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
     				</ul>
     			</li>
     		</ul>
@@ -173,16 +173,16 @@
     		<div class='blocGauche'>
     			l' association
     			<ul>
-    				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'>accueil</a></li>
-    				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'>nos partenaires</a></li>
-    				<li><a href='./index.php?module=cinepassion38&amp;page=plan'>plan</a></li>
+    				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
+    				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> nos partenaires </a></li>
+    				<li><a href='./index.php?module=cinepassion38&amp;page=plan'> plan </a></li>
     			</ul>
     		</div>
     		<div class='blocGauche'>
            			les films
             		<ul>
-        				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'>accueil</a></li>
-        				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'>list des films</a></li>
+        				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
+        				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> list des films </a></li>
         			</ul>
     		</div>
     		<div class='blocDroite'>
