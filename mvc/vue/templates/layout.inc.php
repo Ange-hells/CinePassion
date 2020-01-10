@@ -87,11 +87,11 @@
     		<img alt='' src='./image/divers/cinepassion38Logo.png' id='cinepassion38' />
     		<div id='authentification'>
     			<?php echo $authentification . PHP_EOL; ?>
-    			<form action="./index.php?module=home&amp;page=inscription" method="post" id='signZone'> 
-    				<input class="signElement" type="id" name="id" placeholder=" name" autocomplete="off" > 
-    				<input class="signElement" type="password" name="passe" placeholder=" password" autocomplete="off" >
-    				<input class="signElement" type="submit" value="Valider" > 
-    				<input class="signElement" type="button" value="inscription" href="./index.php?module=home&amp;page=inscription" >
+    			<form action="./index.php" method="post" id='signZone'> 
+    				<input class="Champ" type="id" name="id" placeholder=" name" autocomplete="off" > 
+    				<input class="Champ" type="password" name="passe" placeholder=" password" autocomplete="off" >
+    				<input class="Bouton" type="submit" value="Valider" > 
+    				<a href="./index.php?module=home&amp;page=inscription"><input class="Bouton" type="button" value="inscription"></a>
     			</form>
     		</div>
     		<div id='titre'>
