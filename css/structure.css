@@ -319,6 +319,7 @@ div#main div[id^=encarts]
 	width: 200px;
 	background-color: inherit;
 }
+
 div#main div#encartsGauche 
 {
 	float: left;

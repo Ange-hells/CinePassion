@@ -106,7 +106,7 @@ class controleurFilmFiche extends controleur {
         if (!file_exists($affiche)){
            return $affiche = "<img src= './././image/film/affiche/Aucune affiche.jpg'>";
         }else{
-           return $affiche = "<img src='./././image/film/affiche/$TitreFilm'.jpg>";
+           return $affiche = "<img src='./././image/film/affiche/$TitreFilm.jpg'>";
         }
     }
         

@@ -1,0 +1,43 @@
+#statOnglet 
+{
+	position: absolute;
+
+}
+
+.conteneur
+{
+	display: flex;
+	flex-wrap: wrap;
+	
+}
+
+.block
+{
+    border: 1px solid black;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    max-width: 120px;
+    width: 120px;
+    margin: 5px;
+	
+}
+
+.top
+{
+	background-color: silver;
+	text-align: center;
+	border-top-left-radius: 10px;
+	
+}
+
+.bottom
+{
+	
+	
+}
+
+.stat
+{
+	text-align: left;
+	
+}
