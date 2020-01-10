@@ -13,7 +13,7 @@
  * @version 1.0
  * @copyright Christophe Goidin - juin 2017
  */
-class controleurUtilisateurAccueil extends controleur {
+class controleurHomeAccueil extends controleur {
 		
 	/**
 	 * Met à jour le tableau $donnees de la classe mère avec les informations spécifiques de la page

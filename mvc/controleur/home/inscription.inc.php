@@ -6,14 +6,14 @@
  date de modification:
  rôle				: le contrôleur de la page d'accueil des films
  ================================================================================================================*/
-class controleurUtilisateurInscription extends controleur{
+class controleurHomeInscription extends controleur{
     
     private $modele;
     
     public function __construct(){
         require ("./mvc/modele/film/commun.inc.php");
         require ("./mvc/modele/home/Inscription.inc.php");
-        $this->modele = new modeleUtilisateurInscription();
+        $this->modele = new modeleHomeInscription();
                 
     }
     

@@ -13,6 +13,8 @@
     	<title>
     		<?php echo $titreSiteWeb . PHP_EOL; ?>
     	</title>
+		<link rel="icon" type="image/png" href="./image/divers/bobine.png">
+
     	<link rel='stylesheet' type='text/css' href='./css/structure.css' />
     	<link rel='stylesheet' type='text/css' href='./css/menu.css' />
     	<link rel='stylesheet' href='./css/tab.css' />
@@ -86,13 +88,15 @@
     		<img alt='' id='fondHeader' src='./image/divers/fondHeader.jpg' />
     		<img alt='' src='./image/divers/cinepassion38Logo.png' id='cinepassion38' />
     		<div id='authentification'>
-    			<?php echo $authentification . PHP_EOL; ?>
     			<form action="./index.php" method="post" id='signZone'> 
     				<input class="Champ" type="id" name="id" placeholder=" name" autocomplete="off" > 
     				<input class="Champ" type="password" name="passe" placeholder=" password" autocomplete="off" >
     				<input class="Bouton" type="submit" value="Valider" > 
-    				<a href="./index.php?module=home&amp;page=inscription"><input class="Bouton" type="button" value="inscription"></a>
+    				<a href="./index.php?module=home&amp;page=inscription"><input class="Bouton" type="button" value="inscription"></a>	
     			</form>
+					
+
+				<span id="error"></span>
     		</div>
     		<div id='titre'>
     			<?php echo $titreHeader . PHP_EOL; ?>
@@ -136,8 +140,13 @@
     			<li class='plus'>Film
     				<ul class='nv2'>
     					<li><a href='./index.php?module=film&amp;page=accueil'> accueil </a></li>
-    					<li><a href='./index.php?module=film&amp;page=liste'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> Liste des films <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
+    					<li><a href='./index.php?module=film&amp;page=liste'> Liste des films </a></li>
     					<li><a href='./index.php?module=film&amp;page=fiche'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> fiche <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
+    				</ul>
+    			</li>
+				<li class='plus'>Utilisateur
+    				<ul class='nv2'>
+    					<li><a href='./index.php?module=utilisateur&amp;page=accueil'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> accueil <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
     				</ul>
     			</li>
     		</ul>
