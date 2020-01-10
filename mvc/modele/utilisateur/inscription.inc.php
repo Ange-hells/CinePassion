@@ -1,5 +1,5 @@
 <?php
-class modeleHomeInscription extends modele{
+class modeleUtilisateurInscription extends modele{
     /**
      * Renvoie tous les films de la cinémathèque
      * @param null
