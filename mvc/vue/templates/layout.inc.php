@@ -87,17 +87,25 @@
     	<div id='header'>
     		<img alt='' id='fondHeader' src='./image/divers/fondHeader.jpg' />
     		<img alt='' src='./image/divers/cinepassion38Logo.png' id='cinepassion38' />
-    		<div id='authentification'>
-    			<form action="./index.php" method="post" id='signZone'> 
-    				<input class="Champ" type="id" name="id" placeholder=" name" autocomplete="off" > 
-    				<input class="Champ" type="password" name="passe" placeholder=" password" autocomplete="off" >
-    				<input class="Bouton" type="submit" value="Valider" > 
-    				<a href="./index.php?module=home&amp;page=inscription"><input class="Bouton" type="button" value="inscription"></a>	
-    			</form>
-					
 
-				<span id="error"></span>
-    		</div>
+			<div id='authentification'>
+				<?php
+					if (empty($_SESSION)==true){
+						echo "<form action='./index.php' method='post' id='signZone'>";
+							echo "<input class='Champ' type='id' name='id' placeholder=' name' autocomplete='off'>";
+							echo "<input class='Champ' type='password' name='passe' placeholder=' password' autocomplete='off'>";
+							echo "<input class='Bouton' type='submit' value='Valider'>";
+							echo "<a href='./index.php?module=home&amp;page=inscription'><input class='Bouton' type='button' value='inscription'></a>";
+						echo "</form>";
+						echo "<span id='error'></span>";
+					}else{
+						echo "<img>";
+						echo "<span id='profil_name'></span>";
+						echo "<span id='profil_type'></span>";
+						echo "<a href=''>déconexion</a>";
+ 					}
+				?>
+			</div>
     		<div id='titre'>
     			<?php echo $titreHeader . PHP_EOL; ?>
     		</div>
