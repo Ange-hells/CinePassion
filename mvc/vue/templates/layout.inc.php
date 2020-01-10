@@ -100,8 +100,8 @@
 						echo "<span id='error'></span>";
 					}else{
 						echo "<img>";
-						echo "<span id='profil_name'></span>";
-						echo "<span id='profil_type'></span>";
+						echo "<span id='profil_name'>". $Profil_Name ."</span>";
+						echo "<span id='profil_type'>". $Profil_Type ."</span>";
 						echo "<a href=''>déconexion</a>";
  					}
 				?>
