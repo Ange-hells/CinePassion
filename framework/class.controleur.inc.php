@@ -229,7 +229,7 @@ abstract class controleur {
 	 * @copyright Christophe Goidin - juin 2017
 	 */
 	private function getAuthentification() {
-		return "Authentification";
+		
 	}
 	
 	/**

@@ -17,7 +17,6 @@ rôle				: permet de générer le code xhtml de la partie centrale de la page d'
         			<option>Femme</option>
         			<option>Non-Binaire</option>
         			<option>Agenre</option>
-        			<option>BiGenre</option>
         		</select>
     		</div>
     		<br>

@@ -50,6 +50,10 @@ class controleurHomeInscription extends controleur{
         // ===============================================================================================================
         // alimentation des données COMMUNES à toutes les pages
         // ===============================================================================================================
+        $this->img = 24;
+        $this->Profil_Name = 03;
+        $this->Profil_Type = 52;
+
         parent::setDonnees();
     }
      

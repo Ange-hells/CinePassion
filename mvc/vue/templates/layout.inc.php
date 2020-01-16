@@ -17,14 +17,18 @@
 
     	<link rel='stylesheet' type='text/css' href='./css/structure.css' />
     	<link rel='stylesheet' type='text/css' href='./css/menu.css' />
-    	<link rel='stylesheet' href='./css/tab.css' />
-    	<link rel='stylesheet' href='./css/onglet.css' />
+    	<link rel='stylesheet' type='text/css' href='./css/tab.css' />
+    	<link rel='stylesheet' type='text/css' href='./css/onglet.css' />
     <!-- 	<link rel='stylesheet' href='./css/onglet.css' /> -->
     	
     	<script type='text/javascript' src='./librairie/jquery/js/jquery1.7.2.js'></script>
-    	<script type="text/javascript" src="./librairie/jquery/js/jquery-1.2.6.min.js"></script>
+    	<script type="text/javascript" src='./librairie/jquery/js/jquery-1.2.6.min.js'></script>
     	<script type='text/javascript' src='./librairie/simpleslideshow/js/slideSwitch.js'></script>
     	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'></script>
+		<script type='text/javascript' src='./librairie/JsEncrypt/jsencrypt-master/jquery.js'></script>
+		<script type='text/javascript' src='./librairie/GenesisJS/js/GenesisJs-0.1.js'></script>
+
+
     	<?php 
     		if (isset($texteDefilant)) {
     			echo "<link rel='stylesheet' type='text/css' href='./librairie/liscroll/css/liscroll1.0.css' />
@@ -91,19 +95,19 @@
 			<div id='authentification'>
 				<?php
 					if (empty($_SESSION)==true){
-						echo "<form action='./index.php' method='post' id='signZone'>";
-							echo "<input class='Champ' type='id' name='id' placeholder=' name' autocomplete='off'>";
-							echo "<input class='Champ' type='password' name='passe' placeholder=' password' autocomplete='off'>";
-							echo "<input class='Bouton' type='submit' value='Valider'>";
+						echo "<form action='./index.php' method='post' id='signZone' onsubmit='return Verif(this);'>";
+							echo "<input class='Champ' type='id' name='id' placeholder=' name' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which);'>";
+							echo "<input class='Champ' type='password' name='passe' placeholder=' password' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which);'>";
+							echo "<input class='Bouton' type='submit' value='Valider' onclick='Verif(window.document.getElementById('signeZone'));'>";
 							echo "<a href='./index.php?module=home&amp;page=inscription'><input class='Bouton' type='button' value='inscription'></a>";
 						echo "</form>";
 						echo "<span id='error'></span>";
 					}else{
-						echo "<img>";
+						echo "<img alt='Image de profile' id='Profil_IMG' src=". $img .">";
 						echo "<span id='profil_name'>". $Profil_Name ."</span>";
 						echo "<span id='profil_type'>". $Profil_Type ."</span>";
 						echo "<a href=''>déconexion</a>";
- 					}
+					}
 				?>
 			</div>
     		<div id='titre'>
