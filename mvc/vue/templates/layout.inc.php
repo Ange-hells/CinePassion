@@ -25,7 +25,7 @@
     	<script type="text/javascript" src='./librairie/jquery/js/jquery-1.2.6.min.js'></script>
     	<script type='text/javascript' src='./librairie/simpleslideshow/js/slideSwitch.js'></script>
     	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'></script>
-		<script type='text/javascript' src='./librairie/JsEncrypt/jsencrypt-master/jquery.js'></script>
+		<script type='text/javascript' src='./librairie/JsEncrypt/jsencrypt-master/bin/jsencrypt.js'></script>
 		<script type='text/javascript' src='./librairie/GenesisJS/js/GenesisJs-0.1.js'></script>
 
 

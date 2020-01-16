@@ -43,10 +43,10 @@ function Verif(pForm) {
 }
 
 var jse = new JSEncrypt();
-jse.setPublicKey();
-var test = jse.encrypt("voila fjfjiosnfh");
+jse.setPublicKey("MCwwDQYJKoZIhvcNAQEBBQADGwAwGAIRANQSV0QfeHuhjPe9gPRSeE0CAwEAAQ==");
+var test = jse.encrypt("voila");
 
-jse.setPrivateKey("");
+jse.setPrivateKey("MGMCAQACEQDUEldEH3h7oYz3vYD0UnhNAgMBAAECECTcNzzI94kNPy18A5HMfoUCCQD3acyef1lu2wIJANtuimcI2Xn3AgkAp4Xstbk2/hcCCQDHXosfjHnUBwIIck7+Lu6dX/s=");
 var test2 = jse.decrypt(test);
 console.log(" ----- ");
 console.log(test2);
