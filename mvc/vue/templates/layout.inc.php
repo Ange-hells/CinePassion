@@ -100,7 +100,8 @@
 							echo "<input class='Champ' type='password' name='passe' placeholder=' password' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which);'>";
 							echo "<input class='Bouton' type='submit' value='Valider' onclick='Verif(window.document.getElementById('signeZone'));'>";
 							echo "<a href='./index.php?module=home&amp;page=inscription'><input class='Bouton' type='button' value='inscription'></a>";
-						echo "</form>";
+							echo "<imput id='criptpasse' type='text'; >";
+						echo "</form>"; 
 						echo "<span id='error'></span>";
 					}else{
 						echo "<img alt='Image de profile' id='Profil_IMG' src=". $img .">";

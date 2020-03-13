@@ -54,9 +54,20 @@ class controleurHomeAccueil extends controleur {
 		// ===============================================================================================================
 		// alimentation des données COMMUNES à toutes les pages
 		// ===============================================================================================================
+		$this->session_data = $this->getDataSession();
+		$this->img = 24;
+        $this->Profil_Name = 03;
+		$this->Profil_Type = 52;
+		
 		parent::setDonnees();
 	}
 	
+
+	private function getDataSession(){
+
+	return true;
+	}
+
 	/**
 	 * Renvoie un tableau composé des images et des textes utiles pour la génération de la galerie photos slidesjs 
 	 * @param null

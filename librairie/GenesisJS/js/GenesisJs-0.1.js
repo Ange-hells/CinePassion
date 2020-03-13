@@ -9,44 +9,33 @@ function fValidationSaisie(pCodeAscii) {
      return true;
   }else {
      window.document.getElementById("error").innerHTML="Le caractère saisi n'est pas valide";
-     window.setTimeout("window.document.getElementById('error').innerHTML='';",700);
+     window.setTimeout("window.document.getElementById('error').innerHTML='';",1000);
      return false;
   }
 } 
 
 function Verif(pForm) {
     if (pForm.id.value == "") {
-        alert("Le nom doit être renseigné");
+        window.document.getElementById("error").innerHTML="Le nom doit être renseigné";
+        window.setTimeout("window.document.getElementById('error').innerHTML='';",1000)
         pForm.id.focus();
         return false;
     }else if (pForm.id.value.length < 5) {
-        alert("Le nom doit comporter au moins 5 caractères");
+        window.document.getElementById("error").innerHTML="Le nom doit comporter au moins 5 caractères";
+        window.setTimeout("window.document.getElementById('error').innerHTML='';",1000)
         pForm.id.value = "";
         pForm.id.focus();
         return false;
     }else if (isNaN(pForm.id.value) == false) {
-        alert("Le nom ne doit pas être composé uniquement de chiffres");
+        window.document.getElementById("error").innerHTML="Le nom ne doit pas être composé uniquement de chiffres";
+        window.setTimeout("window.document.getElementById('error').innerHTML='';",1000)
         pForm.id.value = "";
         pForm.id.focus();
         return false;
-    }else {
-        for (i = 0; i < pForm.id.value.length; i++) {
-            if (pForm.id.value.substr(i, 1) == "@" || pForm.Nom.value.substr(i, 1) == "&") {
-                alert("Le nom ne doit pas comporter les caractères @ ou & !")
-                pForm.id.value = "";
-                pForm.id.focus();
-                return false;
-            }
-        }
-        return true;
     }
+    var jse = new JSEncrypt();
+    jse.setPublicKey("MCwwDQYJKoZIhvcNAQEBBQADGwAwGAIRANQSV0QfeHuhjPe9gPRSeE0CAwEAAQ==");
+    var test = jse.encrypt(window.document.getElementByName("passe"));
+    
+    
 }
-
-var jse = new JSEncrypt();
-jse.setPublicKey("MCwwDQYJKoZIhvcNAQEBBQADGwAwGAIRANQSV0QfeHuhjPe9gPRSeE0CAwEAAQ==");
-var test = jse.encrypt("voila");
-
-jse.setPrivateKey("MGMCAQACEQDUEldEH3h7oYz3vYD0UnhNAgMBAAECECTcNzzI94kNPy18A5HMfoUCCQD3acyef1lu2wIJANtuimcI2Xn3AgkAp4Xstbk2/hcCCQDHXosfjHnUBwIIck7+Lu6dX/s=");
-var test2 = jse.decrypt(test);
-console.log(" ----- ");
-console.log(test2);
