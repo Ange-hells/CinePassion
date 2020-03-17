@@ -10,15 +10,10 @@
   
     	<?php 
      		foreach ($galerie as $lesAffiche){  
-  		?><img alt="" <?php echo "src= $galerie" ?> />
-        <?php 
+				echo "<img alt='' src='$lesAffiche'/>";
+
     		}
      	?>
-
-    	 <?php 
-//      	 echo $galerie;
-    	 ?>
-    	 
 	</div>
 	
 	<span class='contentInfos'>

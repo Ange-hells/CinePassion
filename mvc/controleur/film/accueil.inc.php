@@ -95,7 +95,7 @@ class controleurFilmAccueil extends controleur {
 	        do {
 	            $nbAlea = mt_rand(0, count($lesAffiches) - 1);
 	        }while ($this->estPresent($lesAffiches[$nbAlea], $result, array($dossier . "Aucune affiche.jpg")));
-	        $result['affiche'] = $lesAffiches[$nbAlea];
+	        $result[$i]['affiche'] = $lesAffiches[$nbAlea];
 	        
 	    }
 	    return $result;
