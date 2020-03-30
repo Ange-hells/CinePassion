@@ -3,8 +3,7 @@ class modeleHomeInscription extends modele{
     /**
      * Renvoie tous les films de la cinémathèque
      * @param null
-     * @return collection : une collection d'objets anonymes contenant les informations sur les films (n°, titre, durée, année de
-     sortie, genre, prénom et nom du réalisateur)
+     * @return collection : une collection d'objets anonymes contenant les informations sur les films (n°, titre, durée, année de sortie, genre, prénom et nom du réalisateur)
      */
 //     public function getListeFilms() {
         

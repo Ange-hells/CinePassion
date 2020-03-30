@@ -13,16 +13,22 @@
     	<title>
     		<?php echo $titreSiteWeb . PHP_EOL; ?>
     	</title>
+		<link rel="icon" type="image/png" href="./image/divers/bobine.png">
+
     	<link rel='stylesheet' type='text/css' href='./css/structure.css' />
     	<link rel='stylesheet' type='text/css' href='./css/menu.css' />
-    	<link rel='stylesheet' href='./css/tab.css' />
-    	<link rel='stylesheet' href='./css/onglet.css' />
+    	<link rel='stylesheet' type='text/css' href='./css/tab.css' />
+    	<link rel='stylesheet' type='text/css' href='./css/onglet.css' />
     <!-- 	<link rel='stylesheet' href='./css/onglet.css' /> -->
     	
     	<script type='text/javascript' src='./librairie/jquery/js/jquery1.7.2.js'></script>
-    	<script type="text/javascript" src="./librairie/jquery/js/jquery-1.2.6.min.js"></script>
-    	<script type='text/javascript' src='./librairie/simpleslideshow/js/slideSwitch.js'/></script>
-    	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'/></script>
+    	<script type="text/javascript" src='./librairie/jquery/js/jquery-1.2.6.min.js'></script>
+    	<script type='text/javascript' src='./librairie/simpleslideshow/js/slideSwitch.js'></script>
+    	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'></script>
+		<script type='text/javascript' src='./librairie/JsEncrypt/jsencrypt-master/bin/jsencrypt.js'></script>
+		<script type='text/javascript' src='./librairie/GenesisJS/js/GenesisJs-0.1.js'></script>
+
+
     	<?php 
     		if (isset($texteDefilant)) {
     			echo "<link rel='stylesheet' type='text/css' href='./librairie/liscroll/css/liscroll1.0.css' />
@@ -85,15 +91,26 @@
     	<div id='header'>
     		<img alt='' id='fondHeader' src='./image/divers/fondHeader.jpg' />
     		<img alt='' src='./image/divers/cinepassion38Logo.png' id='cinepassion38' />
-    		<div id='authentification'>
-    			<?php echo $authentification . PHP_EOL; ?>
-    			<form action="./index.php" method="post" id='signZone'> 
-    				<input class="Champ" type="id" name="id" placeholder=" name" autocomplete="off" > 
-    				<input class="Champ" type="password" name="passe" placeholder=" password" autocomplete="off" >
-    				<input class="Bouton" type="submit" value="Valider" > 
-    				<a href="./index.php?module=home&amp;page=inscription"><input class="Bouton" type="button" value="Inscription"></a>
-    			</form>
-    		</div>
+
+			<div id='authentification'>
+				<?php
+					if (empty($_SESSION)==true){
+						echo "<form action='./index.php' method='post' id='signZone' onsubmit='return Verif(this);'>";
+							echo "<input class='Champ' type='id' name='id' placeholder=' name' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which);'>";
+							echo "<input class='Champ' type='password' name='passe' placeholder=' password' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which);'>";
+							echo "<input class='Bouton' type='submit' value='Valider' onclick='Verif(window.document.getElementById('signeZone'));'>";
+							echo "<a href='./index.php?module=home&amp;page=inscription'><input class='Bouton' type='button' value='inscription'></a>";
+							echo "<imput id='criptpasse' type='text'; >";
+						echo "</form>"; 
+						echo "<span id='error'></span>";
+					}else{
+						echo "<img alt='Image de profile' id='Profil_IMG' src=". $img .">";
+						echo "<span id='profil_name'>". $Profil_Name ."</span>";
+						echo "<span id='profil_type'>". $Profil_Type ."</span>";
+						echo "<a href=''>déconexion</a>";
+					}
+				?>
+			</div>
     		<div id='titre'>
     			<?php echo $titreHeader . PHP_EOL; ?>
     		</div>
@@ -128,16 +145,21 @@
     			<li id='accueil'><a href='./index.php?module=home&amp;page=accueil'>&nbsp;</a></li>
     			<li class='plus'>cinepassion38
     				<ul class='nv2'>
-    					<li><a href='./index.php?module=cinepassion38&amp;page=accueil'>accueil</a></li>
-    					<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'>nos partenaires</a></li>
-    					<li><a href='./index.php?module=cinepassion38&amp;page=plan'>plan</a></li>
+    					<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
+    					<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> nos partenaires </a></li>
+    					<li><a href='./index.php?module=cinepassion38&amp;page=plan'> plan </a></li>
     				</ul>
     			</li>
     			<li class='plus'>Film
     				<ul class='nv2'>
-    					<li><a href='./index.php?module=film&amp;page=accueil'>accueil</a></li>
-    					<li><a href='./index.php?module=film&amp;page=liste'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> Liste des films <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
-    					<li><a href='./index.php?module=film&amp;page=fiche'><img src="https://img.icons8.com/color/16/000000/maintenance.png">fiche<img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
+    					<li><a href='./index.php?module=film&amp;page=accueil'> accueil </a></li>
+    					<li><a href='./index.php?module=film&amp;page=liste'> Liste des films </a></li>
+    					<li><a href='./index.php?module=film&amp;page=fiche'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> fiche <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
+    				</ul>
+    			</li>
+				<li class='plus'>Utilisateur
+    				<ul class='nv2'>
+    					<li><a href='./index.php?module=utilisateur&amp;page=accueil'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> accueil <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
     				</ul>
     			</li>
     		</ul>
@@ -173,16 +195,16 @@
     		<div class='blocGauche'>
     			l' association
     			<ul>
-    				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'>accueil</a></li>
-    				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'>nos partenaires</a></li>
-    				<li><a href='./index.php?module=cinepassion38&amp;page=plan'>plan</a></li>
+    				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
+    				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> nos partenaires </a></li>
+    				<li><a href='./index.php?module=cinepassion38&amp;page=plan'> plan </a></li>
     			</ul>
     		</div>
     		<div class='blocGauche'>
            			les films
             		<ul>
-        				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'>accueil</a></li>
-        				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'>list des films</a></li>
+        				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
+        				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> list des films </a></li>
         			</ul>
     		</div>
     		<div class='blocDroite'>

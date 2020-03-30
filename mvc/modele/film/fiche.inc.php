@@ -12,7 +12,7 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - Novembre 2019
      */
     public function getNbActeur($numFilm){
-        $sql = "select count(numActeur) as nbActeur from participer where numFilm = $numFilm;";
+        $sql = "SELECT count(numActeur) as nbActeur FROM participer WHERE numFilm = $numFilm;";
         $pdoStat = $this->executerRequete($sql);
         $nbActeur = $pdoStat->fetchObject();
         return $nbActeur->nbActeur;
@@ -53,7 +53,7 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - Novembre 2019
      */
     public function getSynopsis($numFilm){
-        $sql = "select synopsisFilm from film where numFilm = $numFilm;";
+        $sql = "SELECT synopsisFilm FROM film WHERE numFilm = $numFilm;";
         $pdoStat = $this->executerRequete($sql);
         $Synopsis = $pdoStat->fetchObject();
         return $Synopsis->synopsisFilm;
@@ -69,7 +69,7 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - Novenbre 2019
      */
     public function getTitreFilm($numFilm){
-        $sql = "select titreFilm from film where numFilm = $numFilm;";
+        $sql = "SELECT titreFilm FROM film WHERE numFilm = $numFilm;";
         $pdoStat = $this->executerRequete($sql);
         $TitreFilm = $pdoStat->fetchObject();
         return $TitreFilm->titreFilm;
@@ -84,7 +84,7 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - Novenbre 2019
      */
     public function getGenre($numFilm){
-        $sql = "select libelleGenre from Genre where Genre.`numGenre`= (select numGenreFilm from film where numFilm = $numFilm);";
+        $sql = "SELECT libelleGenre FROM genre WHERE genre.`numGenre`= (SELECT numGenreFilm FROM film WHERE numFilm = $numFilm);";
         $pdoStat = $this->executerRequete($sql);
         $GenreFilm = $pdoStat->fetchObject();
         return $GenreFilm->libelleGenre;
@@ -99,7 +99,7 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - novenbre 2019
      */
     public function getPays($numFilm){
-        $sql = "select libellePays from Pays where numPays = (select numPaysFilm from film where numFilm = $numFilm);";
+        $sql = "SELECT libellePays FROM pays WHERE numPays = (SELECT numPaysFilm FROM film WHERE numFilm = $numFilm);";
         $pdoStat = $this->executerRequete($sql);
         $PaysFilm = $pdoStat->fetchObject();
         return $PaysFilm->libellePays;
@@ -114,7 +114,7 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - novenbre 2019
      */
     public function getActeurs($numFilm){
-        $sql = "select synopsisFilm from film where numFilm = $numFilm;";
+        $sql = "SELECT synopsisFilm FROM film WHERE numFilm = $numFilm;";
         $pdoStat = $this->executerRequete($sql);
         $ActeurFilm = $pdoStat->fetchObject();
         return $ActeurFilm->Acteurs;
@@ -129,13 +129,13 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - novenbre 2019
      */
     public function getPosition($numFilm){
-        $sql = "select count(titreFilm) as positionFilm
-                from film, realisateur, personne
-                where realisateur.numRealisateur = film.numRealisateurFilm
-                and personne.numPersonne = realisateur.numRealisateur
-                and film.numRealisateurFilm = (select film.numRealisateurFilm from film where film.numFilm = 2)
-                and film.dateSortieFilm <= (select film.dateSortieFilm from film where film.numFilm = 2)
-                order by film.dateSortieFilm;";
+        $sql = "SELECT count(titreFilm) as positionFilm
+                FROM film, realisateur, personne
+                WHERE realisateur.numRealisateur = film.numRealisateurFilm
+                AND personne.numPersonne = realisateur.numRealisateur
+                AND film.numRealisateurFilm = (SELECT film.numRealisateurFilm FROM film WHERE film.numFilm = 2)
+                AND film.dateSortieFilm <= (SELECT film.dateSortieFilm FROM film WHERE film.numFilm = 2)
+                ORDER BY film.dateSortieFilm;";
         
         $pdoStat = $this->executerRequete($sql);
         $PositionFilm = $pdoStat->fetchObject();
@@ -143,7 +143,7 @@ class modeleFilmFiche extends modeleFilm{
             $PositionFilm = "1<sup>er</sup>";
             
         }else{
-            $PositionFilm = "$PositionFilm->positionFilm<sup>éme</sup>";
+            $PositionFilm = "$PositionFilm->positionFilm<sup>ï¿½me</sup>";
         }
         
         return $PositionFilm;
@@ -158,7 +158,7 @@ class modeleFilmFiche extends modeleFilm{
      * @copyright Thomasset Nathan - novenbre 2019
      */
     public function getPrenomReal($numFilm){
-        $sql = "select prenomPersonne from personne where numPersonne = (select numRealisateurFilm from film where numFilm = $numFilm);";
+        $sql = "SELECT prenomPersonne FROM personne WHERE numPersonne = (SELECT numRealisateurFilm FROM film WHERE numFilm = $numFilm);";
         $pdoStat = $this->executerRequete($sql);
         $PrenomReal = $pdoStat->fetchObject();
         return $PrenomReal->prenomPersonne;
@@ -174,7 +174,7 @@ class modeleFilmFiche extends modeleFilm{
     * @copyright Thomasset Nathan - novenbre 2019
     */
     public function getNomReal($numFilm){
-        $sql = "select nomPersonne from personne where numPersonne = (select numRealisateurFilm from film where numFilm = $numFilm);";
+        $sql = "SELECT nomPersonne FROM personne WHERE numPersonne = (SELECT numRealisateurFilm FROM film WHERE numFilm = $numFilm);";
         $pdoStat = $this->executerRequete($sql);
         $NomReal = $pdoStat->fetchObject();
         return $NomReal->nomPersonne;
@@ -189,7 +189,7 @@ class modeleFilmFiche extends modeleFilm{
     * @copyright Thomasset Nathan - novenbre 2019
     */
     public function getPaysReal($numFilm){
-        $sql = "select libellePays from Pays where  numPays = (select numPaysPersonne from Personne where numPersonne = (select numRealisateurFilm from film where numFilm = $numFilm))";
+        $sql = "SELECT libellePays FROM pays WHERE  numPays = (SELECT numPaysPersonne FROM personne WHERE numPersonne = (SELECT numRealisateurFilm FROM film WHERE numFilm = $numFilm))";
         $pdoStat = $this->executerRequete($sql);
         $PaysReal = $pdoStat->fetchObject();
         return $PaysReal->libellePays;
@@ -204,7 +204,7 @@ class modeleFilmFiche extends modeleFilm{
     * @copyright Thomasset Nathan - novenbre 2019
     */
     public function getDateSortie($numFilm){
-        $sql = "select DATE_FORMAT(dateSortieFilm, '%d %M %Y') as dateSortieFilm from film where numfilm = $numFilm;";
+        $sql = "SELECT DATE_FORMAT(dateSortieFilm, '%d %M %Y') as dateSortieFilm FROM film WHERE numfilm = $numFilm;";
         $pdoStat = $this->executerRequete($sql);
         $DateSortie = $pdoStat->fetchObject();
         return $DateSortie->dateSortieFilm;
@@ -219,14 +219,14 @@ class modeleFilmFiche extends modeleFilm{
     * @copyright Thomasset Nathan - novenbre 2019
     */
     public function getDureeFilm($numFilm){
-        $sql = "select dureeFilm from film where numfilm = $numFilm;";
+        $sql = "SELECT dureeFilm FROM film WHERE numfilm = $numFilm;";
         $pdoStat = $this->executerRequete($sql);
         $DureeFilm = $pdoStat->fetchObject();
         return $DureeFilm->dureeFilm;
     }
     
     public function getNote($numFilm){
-        $sql = "select note_nathan, note_steph, note_martin, note_antho from notation where numfilm = $numFilm;";
+        $sql = "SELECT note_nathan, note_steph, note_martin, note_antho FROM notation WHERE numfilm = $numFilm;";
         
 //         $collection = new collection();
         $pdoStat = $this->executerRequete($sql);
@@ -236,15 +236,15 @@ class modeleFilmFiche extends modeleFilm{
     }
     
     /**
-//     * Donne la liste des acteur du film don le numero es donner en parametre
-//     * @param null
-//     * @return int : le nombre de films
-//     * @author Thomasset nathan <nathan.thomasset2@gmail.com>
-//     * @version 1.1
-//     * @copyright Thomasset Nathan - novenbre 2019
-//     */
+    * Donne la liste des acteur du film don le numero es donner en parametre
+    * @param null
+    * @return int : le nombre de films
+    * @author Thomasset nathan <nathan.thomasset2@gmail.com>
+    * @version 1.1
+    * @copyright Thomasset Nathan - novenbre 2019
+    */
 //     public function getImgFilm($numFilm){
-//         $sql = "select synopsisFilm from film where $numFilm;";
+//         $sql = "SELECT synopsisFilm FROM film WHERE $numFilm;";
 //         $pdoStat = $this->executerRequete($sql);
 //         $Synopsis = $pdoStat->fetchObject();
 //         return $Synopsis->Synopsis;
@@ -259,7 +259,7 @@ class modeleFilmFiche extends modeleFilm{
 //     * @copyright Thomasset Nathan - novenbre 2019
 //     */
 //     public function getImgFilm($numFilm){
-//         $sql = "select synopsisFilm from film where $numFilm;";
+//         $sql = "SELECT synopsisFilm FROM film WHERE $numFilm;";
 //         $pdoStat = $this->executerRequete($sql);
 //         $Synopsis = $pdoStat->fetchObject();
 //         return $Synopsis->Synopsis;
@@ -274,7 +274,7 @@ class modeleFilmFiche extends modeleFilm{
 //     * @copyright Thomasset Nathan - novenbre 2019
 //     */
 //     public function getImgFilm($numFilm){
-//         $sql = "select synopsisFilm from film where $numFilm;";
+//         $sql = "SELECT synopsisFilm FROM film WHERE $numFilm;";
 //         $pdoStat = $this->executerRequete($sql);
 //         $Synopsis = $pdoStat->fetchObject();
 //         return $Synopsis->Synopsis;
