@@ -150,27 +150,11 @@ div#header div#authentification
 	top: 20px;
 	left: 20px;
 	padding: 0px;
-	width: 180px;
 	width: 230px;
 	border: none;
 	color: white;
 }
 
-
-div#header div#authentification .Champ
-{
-    border-radius: 5px;
-    margin-bottom: 3px;
-}	
-
-div#header div#authentification .Bouton
-{
-	border-radius: 5px;
-    margin-bottom: 3px;
-	margin-right: 5px;
-    width: 82px;
-}
-	
 .Champ
 {
     border-radius: 5px;
@@ -239,9 +223,8 @@ div#header div#dateDuJour
 div#header img#fondHeader 
 {
 	border-radius: 10px;
-
-} 
-
+}
+	
 
 /* ======================================================================================================= 
    menu : la mise en forme du menu est décrite dans le fichier menu.css
