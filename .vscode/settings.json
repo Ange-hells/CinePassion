@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "database": "cinepassion38",
+            "dialect": "MySQL",
+            "name": "cp38",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        }
+    ]
+}
