@@ -26,8 +26,8 @@
     	<script type='text/javascript' src='./librairie/simpleslideshow/js/slideSwitch.js'></script>
     	<script type='text/javascript' src='./librairie/lightbox2/js/lightbox.js'></script>
 		<script type='text/javascript' src='./librairie/JsEncrypt/jsencrypt-master/bin/jsencrypt.js'></script>
-		<script type='text/javascript' src='./librairie/GenesisJS/js/GenesisJs-0.1.js'></script>
-
+		<script type='text/javascript' src='./librairie/GenesisJS/js/GenesisJs-0.1.js'></script> 
+		<script type='text/javascript'> var publicKeyRsa = "<?php echo $rsaPublicKey; ?>";</script>
 
     	<?php 
     		if (isset($texteDefilant)) {
@@ -91,23 +91,24 @@
     	<div id='header'>
     		<img alt='' id='fondHeader' src='./image/divers/fondHeader.jpg' />
     		<img alt='' src='./image/divers/cinepassion38Logo.png' id='cinepassion38' />
-
 			<div id='authentification'>
 				<?php
 					if (empty($_SESSION)==true){
-						echo "<form action='./index.php' method='post' id='signZone' onsubmit='return Verif(this);'>";
-							echo "<input class='Champ' type='id' name='id' placeholder=' name' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which);'>";
-							echo "<input class='Champ' type='password' name='passe' placeholder=' password' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which);'>";
+						echo "<form action='./index.php?module=user&amp;page=authentification' onsubmit='return verifierAuthentificationUser(this)''; method='post'>";
+							echo "<input class='Champ' type='id' name='id' placeholder=' name' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which)'>";
+							echo "<input class='Champ' type='password' name='passe' placeholder=' password' autocomplete='off' maxlength=20 onkeypress='return fValidationSaisie(window.event.which)'>";
 							echo "<input class='Bouton' type='submit' value='Valider' onclick='Verif(window.document.getElementById('signeZone'));'>";
-							echo "<a href='./index.php?module=home&amp;page=inscription'><input class='Bouton' type='button' value='inscription'></a>";
-							echo "<imput id='criptpasse' type='text'; >";
-						echo "</form>"; 
+							echo "<a href='./index.php?module=home&amp;page=inscription'><input class='Bouton' type='button' value='Inscription'></a>";
+						echo "</form>";
 						echo "<span id='error'></span>";
-					}else{
-						echo "<img alt='Image de profile' id='Profil_IMG' src=". $img .">";
-						echo "<span id='profil_name'>". $Profil_Name ."</span>";
-						echo "<span id='profil_type'>". $Profil_Type ."</span>";
-						echo "<a href=''>déconexion</a>";
+					}elseif (isset($_SESSION['Utilisateur'])){
+						echo "<div class='flex'>";
+							echo "<img alt='Image de profile' id='Profil_IMG' src='" . $_SESSION['Utilisateur']->image . "'>";
+							echo "<span id='profil_name'>" . $_SESSION['Utilisateur']->prenomNom; "</span>";
+							echo "<span id='profil_type'> profil : " . $_SESSION['Utilisateur']->typeUser;"</span>";
+							echo "<a href='' onclick='Deco();'> déconexion </a>";
+							// echo "<a href='./index.php?module=" .$this->module. "&amp;page=" .$this->page. "' onclick='session_destroy()'; >déconexion</a>";
+						echo "</div>";
 					}
 				?>
 			</div>
@@ -135,7 +136,7 @@
     		?>
     		<script type='text/javascript'>
     			$(function(){
-    				$("ul#texteDefilant").liScroll({travelocity: 0.02});
+    				$("ul#texteDefilant").liScroll({travelocity: 0.02}); 
     			});
     		</script>
     	</div><!-- header -->
@@ -160,7 +161,8 @@
 				<li class='plus'>Utilisateur
     				<ul class='nv2'>
     					<li><a href='./index.php?module=utilisateur&amp;page=accueil'><img src="https://img.icons8.com/color/16/000000/maintenance.png"> accueil <img src="https://img.icons8.com/color/16/000000/maintenance.png"></a></li>
-    				</ul>
+						<li><a href='./index.php?module=user&amp;page=inscription'>inscription</a></li>
+					</ul>
     			</li>
     		</ul>
     	</div><!-- menu -->
@@ -201,11 +203,11 @@
     			</ul>
     		</div>
     		<div class='blocGauche'>
-           			les films
-            		<ul>
-        				<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
-        				<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> list des films </a></li>
-        			</ul>
+				les films
+				<ul>
+					<li><a href='./index.php?module=cinepassion38&amp;page=accueil'> accueil </a></li>
+					<li><a href='./index.php?module=cinepassion38&amp;page=partenaire'> list des films </a></li>
+				</ul>
     		</div>
     		<div class='blocDroite'>
     			<span class='centrer'>...</span>

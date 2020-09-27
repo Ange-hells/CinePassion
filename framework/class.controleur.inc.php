@@ -63,7 +63,9 @@ abstract class controleur {
 		$this->version = "version : " . configuration::get("version");
 		$this->dateDuJour = utf8_encode(strftime("%A %d %B %Y"));
 		$this->authentification = $this->getAuthentification();
-		
+		include ("./mvc/modele/rsa.inc.php");
+		$this->rsaPublicKey = (new modeleRSA())->getPublicKeyRsa(configuration::get("numCoupleCleRsa"));
+
 		// ===============================================================================================================
 		// on positionne l'action dans le tableau $donnees afin d'y avoir accès dans la vue
 		// ===============================================================================================================
@@ -350,6 +352,11 @@ abstract class controleur {
 	    }
 	    
 	}*/
+
+	public function RSA(){
+		include ("./framework/class.Authentification.inc.php");
+		return (new Authentification)->getPublicKeyRsa(configuration::get("numCoupleCleRsa"));
+	}
 	
 } // class
 
